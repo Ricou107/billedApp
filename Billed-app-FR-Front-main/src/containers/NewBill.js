@@ -37,7 +37,6 @@ export default class NewBill {
         },
       })
       .then(({ fileUrl, key }) => {
-        console.log(fileUrl);
         this.billId = key;
         this.fileUrl = fileUrl;
         this.fileName = fileName;
@@ -45,15 +44,9 @@ export default class NewBill {
       .catch((error) => console.error(error));
   };
   handleSubmit = (e) => {
-    console.log('ok')
     e.preventDefault();
     const extension = this.fileName.split(".").pop();
-      console.log(extension)
     if (extension === "jpg" || extension === "jpeg" || extension === "png") {
-      console.log(
-        'e.target.querySelector(`input[data-testid="datepicker"]`).value',
-        e.target.querySelector(`input[data-testid="datepicker"]`).value
-      );
       const email = JSON.parse(localStorage.getItem("user")).email;
       const bill = {
         email,
